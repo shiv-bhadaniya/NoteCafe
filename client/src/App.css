@@ -1,0 +1,31 @@
+.box {
+width: 30%;
+display: inline-block;
+z-index: 1;
+top: 100px;
+overflow-x: hidden;
+padding-top: 20px;
+}
+
+.TexteditorBox {
+  left: 33.3%;
+    background: red;
+    height: 100%;
+}
+
+.TodoBox {
+  left: 1%;
+  background: blue;
+  height: 100%;
+}
+
+.container {
+  background: black;
+  height: 100vh;
+}
+
+.chat {
+  right: 1%;
+  height: 100%;
+  background: purple;
+}

@@ -9,7 +9,6 @@ import {
 const Texteditor = () => {
   const dispatch = useDispatch();
   const roots = useSelector((state) => state.root);
-  const [userData, setUserData] = useState({ text: "" });
   const user = JSON.parse(localStorage.getItem("profile"));
 
   var userId = user.result._id;
@@ -20,6 +19,8 @@ const Texteditor = () => {
   useEffect(() => {
     dispatch(getHomeData());
   }, [dispatch]);
+
+
 
   for (let index = 0; index < roots.length; index++) {
     let element = roots[index];
@@ -33,6 +34,12 @@ const Texteditor = () => {
       }
     }
   }
+
+  const [userData, setUserData] = useState({ text: ""});
+
+  useEffect(() => {
+    if (currentUserAllData) setUserData({text: currentUserAllData.text});
+  }, [currentUserAllData]);
 
   // if (currentUserAllData != null) {
   //   setUserData({ todos: currentUserAllData.todos });
@@ -49,7 +56,6 @@ const Texteditor = () => {
       dispatch(
         updateUserData(currentUserDataMainID, {
           ...userData,
-          todos: currentUserAllData.todos,
         })
       );
       // dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));

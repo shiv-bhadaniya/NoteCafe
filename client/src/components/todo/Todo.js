@@ -6,6 +6,7 @@ import {
   createNewUserData,
   updateUserData,
 } from "../../action/actions";
+import AllTodos from "./todos/AllTodos.js";
 
 const Todo = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Todo = () => {
   var currentUserDataMainID = null;
   var userDataFind = false;
   var currentUserAllData = null;
+  var currentUserAllTodo = null;
 
   useEffect(() => {
     dispatch(getHomeData());
@@ -65,7 +67,15 @@ const Todo = () => {
   //   setUserData({ text: currentUserAllData.text });
   // }
 
+
   console.log("Todo - Current User All Data : ", currentUserAllData);
+
+  if(currentUserAllData) {
+    console.log("Todo - Current User All Data after checking condition : ", currentUserAllData);
+    currentUserAllTodo = currentUserAllData.todos;
+  }
+
+  console.log("currentUserAllTodo : ", currentUserAllTodo);
 
   const handleClickTodo = (e) => {
     e.preventDefault();
@@ -92,7 +102,9 @@ const Todo = () => {
   return (
     <>
       <title>To Do List</title>
-      <div class="box" id="heading"></div>
+      <div class="box" id="heading">
+        <AllTodos currentUserAllData={currentUserAllData}/>
+      </div>
 
       <div class="box">
         <form class="item" onSubmit={handleClickTodo}>

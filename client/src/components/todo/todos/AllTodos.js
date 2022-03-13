@@ -14,10 +14,15 @@ const AllTodos = ({currentUserAllData}) => {
     console.log("currentUserAllTodo from AllTodos : ", currentUserAllTodo);
   }
 
+  function applyStyle(e) {
+    e.target.style.textDecorationLine = "line-through"
+  }
+
   return (
     <>
-      {currentUserAllTodo ? (currentUserAllTodo.map((todo) => (
-            <p>{todo}</p>
+      {currentUserAllTodo ? (currentUserAllTodo.map((todo, i) => (
+            // <p onClick={applyStyle} >{todo}</p>
+            <input name="{i}" value={todo} />
           ))) : <h1>Waite...</h1>}
     </>
   )
